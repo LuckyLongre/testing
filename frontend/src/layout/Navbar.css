@@ -17,6 +17,15 @@
   letter-spacing: 1px;
 }
 
+.navbar-left { display:flex; align-items:center; gap:16px; }
+.nav-links { display:flex; gap:12px; align-items:center; }
+.nav-link { color: #ddd; text-decoration: none; padding: 6px 8px; border-radius:4px; }
+.nav-link:hover { color: #fff; background: rgba(255,255,255,0.03); }
+.nav-link.active { color: #fff; background: rgba(255,255,255,0.06); font-weight:600; }
+.nav-user { margin-right:8px; color:#ddd; font-size:0.95rem; }
+.logout-btn { background: transparent; color:#fff; border:1px solid rgba(255,255,255,0.08); padding:6px 10px; border-radius:4px; cursor:pointer; }
+.logout-btn:hover { background: rgba(255,255,255,0.06); }
+
 .login-btn {
   background: #fff;
   color: #222;

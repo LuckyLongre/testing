@@ -1,15 +1,22 @@
 .project-card {
   border: 1px solid #e6e6e6;
-  padding: 12px;
+  padding: 14px;
   border-radius: 8px;
   background: #fff;
   cursor: pointer;
   transition: box-shadow 0.12s ease, transform 0.08s ease;
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  min-height: 120px;
 }
-.project-card { display:flex; flex-direction:column; width:100%; }
 .project-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.06); transform: translateY(-2px); }
 .pc-header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
-.pc-title { margin:0; font-size:1rem; }
+.pc-title { margin:0; font-size:1rem; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pc-status { font-size:0.8rem; padding:4px 8px; border-radius:12px; }
+.pc-desc { color:#444; margin:8px 0; font-size:0.95rem; overflow-wrap:anywhere; }
+.pc-meta { display:flex; gap:12px; color:#666; font-size:0.85rem; margin-top:auto; }
+.pc-created { margin-left:auto; color:#999; }
 .pc-status { font-size:0.8rem; padding:4px 8px; border-radius:12px; }
 .pc-status-active { background:#e6f0ff; color:#2d6cdf; }
 .pc-status-unknown { background:#f0f0f0; color:#666; }
