@@ -10,7 +10,9 @@ import app from "./src/app.js";
 
 const port = process.env.PORT || 8000;
 
-
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to the API!" });
+});
 
 connectDB()
   .then(() => {
