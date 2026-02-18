@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from "react";
+import { getAllUsers } from "../api/api";
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -8,13 +9,14 @@ function Home() {
 
   useEffect(() => {
     const fetchUsers = async () => {
+      setLoading(true);
+      setError("");
       try {
-        const response = await fetch("http://localhost:8000/api/v1/user/all");
-        const data = await response.json();
-        if (response.ok && data.success) {
-          setUsers(data.data.users);
+        const data = await getAllUsers();
+        if (data && data.success) {
+          setUsers(data.data?.users || []);
         } else {
-          setError(data.message || "Failed to fetch users");
+          setError(data?.message || "Failed to fetch users");
         }
       } catch (err) {
         setError("Network error");
