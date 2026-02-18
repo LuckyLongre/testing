@@ -2,8 +2,9 @@ import axios from "axios";
 import { toast } from "sonner";
 
 // Initialize Axios instance
+
 const api = axios.create({
-  baseURL: VITE_BACKEND_URL ,
+  baseURL: import.meta.env.BACKEND_URL,
   headers: {
     "Content-Type": "application/json"
   },
