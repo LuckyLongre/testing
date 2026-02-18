@@ -1,22 +1,31 @@
-import React, { createContext, useState, useContext } from "react";
-import { redirect } from "react-router-dom";
-
+import React, { createContext, useState, useContext, useEffect } from "react";
 
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const stored = localStorage.getItem("user");
+    return stored ? JSON.parse(stored) : null;
+  });
 
-  // Call this after successful login
+  useEffect(() => {
+    // Sync user state with localStorage
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [user]);
+
   const loginUser = (userData) => {
     setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
   };
 
-  // Call this to logout
-  const logoutUser = () => {
+  const logoutUser = (cb) => {
     setUser(null);
-    redirect("/login"); // Redirect to login page after logout
-
+    localStorage.removeItem("user");
+    if (typeof cb === "function") cb();
   };
 
   return (

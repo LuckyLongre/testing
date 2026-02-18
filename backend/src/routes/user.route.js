@@ -11,7 +11,7 @@ userRouter.post("/signup", signupUser);
 
 userRouter.post("/login", loginUser);
 
-userRouter.get("/profile", getUserProfile);
+userRouter.post("/profile", getUserProfile);
 
 userRouter.post("/logout", logoutUser);
 

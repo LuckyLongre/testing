@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { signupUser } from "../api/api";
 
 const Signup = () => {
   const [form, setForm] = useState({
@@ -13,6 +13,7 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,16 +25,13 @@ const Signup = () => {
     setError("");
     setSuccess("");
     try {
-      const res = await axios.post("http://localhost:8000/api/v1/user/signup", form, { 
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      const data = res.data;
+      const data = await signupUser(form);
       if (data.success) {
         setSuccess("Signup successful!");
         setForm({ email: "", fullName: "", desc: "", role: "", password: "" });
+        setTimeout(() => {
+          navigate("/login");
+        }, 1200);
       } else {
         setError(data.message || "Signup failed");
       }

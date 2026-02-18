@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../components/providers/UserProvider";
+import { loginUser as loginUserApi } from "../api/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -25,15 +26,8 @@ const Login = () => {
     setError("");
     setSuccess("");
     try {
-      const res = await fetch("http://localhost:8000/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await res.json();
-      if (res.ok && data.success) {
+      const data = await loginUserApi(email, password);
+      if (data.success) {
         setSuccess("Login successful!");
         if (data.data && data.data.user) {
           loginUser(data.data.user);

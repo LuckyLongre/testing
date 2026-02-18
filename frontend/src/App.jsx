@@ -15,6 +15,17 @@ import Dashboard from "./pages/Dashboard";
 import Project from "./pages/Project";
 import Signup from "./pages/Signup";
 import Layout from "./layout/Layout";
+import { Toaster } from "sonner";
+import { useUser } from "./components/providers/UserProvider";
+import { Navigate } from "react-router-dom";
+
+const ProtectedRoute = ({ children }) => {
+  const { user } = useUser();
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+};
 
 const router = createBrowserRouter([
   {
@@ -44,9 +55,11 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <Layout>
-        <Dashboard />
-      </Layout>
+      <ProtectedRoute>
+        <Layout>
+          <Dashboard />
+        </Layout>
+      </ProtectedRoute>
     ),
   },
   {
@@ -61,7 +74,12 @@ const router = createBrowserRouter([
 
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Toaster richColors position="top-center" />
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;
