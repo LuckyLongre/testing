@@ -1,0 +1,34 @@
+.project-section {
+  padding: 12px;
+  position: relative;
+}
+.project-placeholder {
+  margin-top: 12px;
+  padding: 16px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  color: #555;
+  background: #fafafa;
+}
+
+.create-project-btn {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  padding: 6px 10px;
+  border: none;
+  background: #2d6cdf;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* Modal styles moved to ProjectModal.css */
+
+.project-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+.modal-overlay {
+

@@ -21,8 +21,8 @@ const projectSchema = new mongoose.Schema({
   projectName: { type: String, required: true },
   project_description: { type: String , required: true},
   included_messaging_source: [{ type: String }],
-  files: [{ type: String
-      , filename : String
+  files: [{  filename : String,
+          url : String,
      }],
   brdMdx: { type: String },
   status: { type: String, default: "active" },

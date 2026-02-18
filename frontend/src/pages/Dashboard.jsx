@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../components/providers/UserProvider";
 import { getUserProfile } from "../api/api";
-
+import ProfileCard from "../components/dashboard/ProfileCard";
+import ProjectSection from "../components/dashboard/ProjectSection";
+import "./Dashboard.css";
 
 function Dashboard() {
   const { user } = useUser();
@@ -36,16 +38,16 @@ function Dashboard() {
       <h2>Dashboard Page</h2>
       {loading && <p>Loading profile...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
-      {profile && (
-        <div style={{ border: "1px solid #ccc", borderRadius: 8, padding: 16, maxWidth: 400 }}>
-          <h3>{profile.fullName}</h3>
-          <p><b>Email:</b> {profile.email}</p>
-          {profile.desc && <p><b>Description:</b> {profile.desc}</p>}
-          {profile.role && <p><b>Role:</b> {profile.role}</p>}
-          <p><b>Created At:</b> {new Date(profile.createdAt).toLocaleString()}</p>
-          <p><b>Updated At:</b> {new Date(profile.updatedAt).toLocaleString()}</p>
+
+      <div className="dashboard-container">
+        <div className="left-panel">
+          <ProfileCard profile={profile || user} />
         </div>
-      )}
+
+        <div className="right-panel">
+          <ProjectSection />
+        </div>
+      </div>
     </div>
   );
 }

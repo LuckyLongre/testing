@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import apiError from "./utils/apiError.js";
 import userRouter from "./routes/user.route.js";
+import projectRouter from "./routes/project.route.js";
 import dotenv from "dotenv";
 
 dotenv.config();

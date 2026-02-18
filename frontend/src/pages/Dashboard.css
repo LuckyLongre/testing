@@ -1,0 +1,19 @@
+.dashboard-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+.left-panel {
+  width: 20%;
+  min-width: 180px;
+}
+.right-panel {
+  width: 70%;
+}
+
+@media (max-width: 800px) {
+  .dashboard-container { flex-direction: column; }
+  .left-panel, .right-panel { width: 100%; }
+}

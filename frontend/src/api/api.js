@@ -98,7 +98,7 @@ export const createProject = async (projectData) => {
   }
 };
 
-// Get projects for a user (sends id as query param)
+// Get projects for a user (GET with query param `id`)
 export const getProjects = async (id) => {
   try {
     const response = await api.get("/project/getProjects", { params: { id } });

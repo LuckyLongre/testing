@@ -21,13 +21,16 @@ export const createProject = asyncHandler(async (req, res) => {
 
 
 export const getProjects = asyncHandler(async (req, res) => {
-    const { id } = req.body;
+    // Prefer query param for GET requests, fall back to body for compatibility
+    const id = req.query?.id || req.body?.id;
+    if (!id) throw new apiError(400, "User id is required");
 
     const projects = await Project.find({ userId: id });
 
-    if (!projects) throw new apiError(404, "No projects found for this user");
+    // Return empty list when none found (GET should be idempotent)
+    const result = Array.isArray(projects) ? projects : [];
 
-    return res.status(200).json(new apiRes(200, { projects }, "Projects retrieved successfully"));
+    return res.status(200).json(new apiRes(200, { projects: result }, "Projects retrieved successfully"));
 });
 
 export const getProjectById = asyncHandler(async (req, res) => {
