@@ -4,6 +4,7 @@
   background: linear-gradient(180deg, rgba(248,250,252,1) 0%, rgba(243,246,255,1) 100%);
   min-height: calc(100vh - 60px);
   padding: 20px 24px;
+  position: relative;
 }
 
 .page-title{
@@ -11,6 +12,19 @@
   color: var(--text);
   font-size: 20px;
 }
+
+.logout-btn{
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  background: transparent;
+  border: 1px solid var(--border-muted);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.logout-btn:hover{ transform: translateY(-1px); box-shadow: 0 6px 18px rgba(2,6,23,0.04); }
 
 /* make project cards more colorful and theme-driven */
 .project-section .placeholder{

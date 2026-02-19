@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     toast.success("Logged out successfully");
+    navigate('/login');
   };
 
   useEffect(() => {
