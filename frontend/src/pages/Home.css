@@ -1,9 +1,0 @@
-.hero { padding-bottom: 12px; }
-.hero .brand { font-size: 22px; }
-.hero-cta .btn { min-width: 160px; }
-.cards-grid { margin-top: 12px; }
-.user-card { transition: transform .18s ease, box-shadow .18s ease; }
-.user-card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(2,6,23,0.08); }
-.avatar { font-size: 18px; letter-spacing: .6px }
-.user-name { font-weight:700 }
-.user-desc { font-size: 13px }

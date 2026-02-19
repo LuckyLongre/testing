@@ -15,6 +15,8 @@ datasource db {
 
 
 
+
+
 model User {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   fullName  String
@@ -24,5 +26,74 @@ model User {
   role      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  Project   Project[]
 }
+
+model Project {
+  id                          String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectName                 String
+  project_description         String
+  included_messaging_source   String[]
+  files                       String[]
+  brdMdx                      String
+  status                      String
+  userId                      String   @db.ObjectId
+  createdAt                   DateTime @default(now())
+  updatedAt                   DateTime @updatedAt
+
+  User                        User     @relation(fields: [userId], references: [id])
+  Stakeholders                Stakeholder[]
+  Facts                       Fact[]
+  Contradictions              Contradiction[]
+  Resolutions                 Resolution[]
+}
+
+
+model Stakeholder {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  role      String
+  influence  String
+  stance     String
+  projectId String   @db.ObjectId
+
+  Project   Project  @relation(fields: [projectId], references: [id])
+}
+
+model Fact {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  content    String
+  source     String
+  tone       String
+  when       DateTime
+  resolved   Boolean
+  projectId  String   @db.ObjectId
+  sourceType String
+
+  Project    Project  @relation(fields: [projectId], references: [id])
+}
+
+model Contradiction {
+  id                   String   @id @default(auto()) @map("_id") @db.ObjectId
+  contradiction_facts  String[]
+  context              String
+  projectId            String   @db.ObjectId
+
+  Project              Project  @relation(fields: [projectId], references: [id])
+}
+
+
+model Resolution {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  final_decision    String
+  winnerFactId      String   @db.ObjectId
+  custom_input      String
+  reasoning         String
+  contradiction_id  String   @db.ObjectId
+  projectId         String   @db.ObjectId
+
+  Project           Project     @relation(fields: [projectId], references: [id])
+}
+
 

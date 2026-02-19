@@ -1,5 +1,0 @@
-.dashboard-root{padding:18px 0}
-.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
-.dash-card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(15,23,42,0.04);box-shadow:0 8px 20px rgba(2,6,23,0.04)}
-.dash-title{font-size:16px;margin:0 0 8px}
-.dash-small{color:var(--muted);font-size:13px}
