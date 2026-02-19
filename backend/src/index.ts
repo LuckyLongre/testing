@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import userRouter from './routes/user.route';
 import Api from './utils/apiRes.util';
+import projectRouter from './routes/project.route';
 
 
 dotenv.config();
@@ -22,6 +23,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api/v1", userRouter);
+app.use("/api/v1/projects", projectRouter);
 
 app.get("/", (req, res) => {
   Api.success(res, null, "Welcome to the API");

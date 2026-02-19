@@ -8,14 +8,20 @@ const AuthContext = createContext({
 });
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUserState] = useState(() => {
+  const [user, setUserState] = useState(null);
+  const [initialized, setInitialized] = useState(false);
+
+  useEffect(() => {
     try {
       const raw = localStorage.getItem("user");
-      return raw ? JSON.parse(raw) : null;
+      const parsed = raw ? JSON.parse(raw) : null;
+      setUserState(parsed);
     } catch (e) {
-      return null;
+      setUserState(null);
+    } finally {
+      setInitialized(true);
     }
-  });
+  }, []);
 
   const setUser = (u) => {
     setUserState(u);
@@ -49,7 +55,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, setUser, logout }}>
-      {children}
+      {initialized ? children : null}
     </AuthContext.Provider>
   );
 };

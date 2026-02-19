@@ -115,3 +115,75 @@ export const deleteAllUsers = async () => {
 };
 
 
+
+/*
+
+all methods of project
+
+post /projects - create project
+get /projects/user/:userId - get projects by user ID
+put /projects/:projectId - update a project
+delete /projects/:projectId - delete a project
+
+ */
+
+
+export const createProject = async (projectData) => {
+  try {
+    const response = await api.post('/projects', projectData);
+    const msg = _extractMessage(response) || "Project created successfully";
+    toast.success(msg);
+    return response.data ?? response;
+  } catch (error) {
+    console.error('Error creating project:', error);
+    const errMsg = error?.response ? (error.response.data?.message ?? error.response.message) : "Failed to create project";
+    toast.error(errMsg);
+    throw error;
+  }
+};
+
+export const getProjectsByUserId = async (userId) => {
+  try {
+    const response = await api.get(`/projects/user/${userId}`);
+    const msg = _extractMessage(response) || "Projects fetched successfully";
+    toast.success(msg);
+    return response.data ?? response;
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+    const errMsg = error?.response ? (error.response.data?.message ?? error.response.message) : "Failed to fetch projects";
+    toast.error(errMsg);
+    throw error;
+  }
+};
+
+export const updateProject = async (projectId, projectData) => {
+  try {
+    const response = await api.put(`/projects/${projectId}`, projectData);
+    const msg = _extractMessage(response) || "Project updated successfully";
+    toast.success(msg);
+    return response.data ?? response;
+  } catch (error) {
+    console.error('Error updating project:', error);
+    const errMsg = error?.response ? (error.response.data?.message ?? error.response.message) : "Failed to update project";
+    toast.error(errMsg);
+    throw error;
+  }
+};
+
+export const deleteProject = async (projectId) => {
+  try {
+    const response = await api.delete(`/projects/${projectId}`);
+    const msg = _extractMessage(response) || "Project deleted successfully";
+    toast.success(msg);
+    return response.data ?? response;
+  } catch (error) {
+    console.error('Error deleting project:', error);
+    const errMsg = error?.response ? (error.response.data?.message ?? error.response.message) : "Failed to delete project";
+    toast.error(errMsg);
+    throw error;
+  }
+};
+
+
+
+

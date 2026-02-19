@@ -23,10 +23,10 @@ model Project {
   id                        String          @id @default(auto()) @map("_id") @db.ObjectId
   projectName               String
   project_description       String
-  included_messaging_source String[]
-  files                     String[]
-  brdMdx                    String
-  status                    String
+  included_messaging_source String[]      @default([])
+  files                     String[]      @default([])
+  brdMdx                    String?
+  status                    Int              @default(0)
   userId                    String          @db.ObjectId
   createdAt                 DateTime        @default(now())
   updatedAt                 DateTime        @updatedAt
@@ -55,16 +55,17 @@ model Fact {
   source     String
   tone       String
   when       DateTime
-  resolved   Boolean
+  resolved   Boolean @default(true)
   projectId  String   @db.ObjectId
-  sourceType String
+ sourceType FactSourceType
+ stackHolderId String?  @db.ObjectId
 
   project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 }
 
 model Contradiction {
   id                  String   @id @default(auto()) @map("_id") @db.ObjectId
-  contradiction_facts String[]
+  contradiction_facts String[]      @default([])
   context             String
   projectId           String   @db.ObjectId
 
@@ -81,4 +82,9 @@ model Resolution {
   projectId        String @db.ObjectId
 
   project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+enum FactSourceType {
+  messaging
+  file
 }

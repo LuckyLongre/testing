@@ -1,0 +1,51 @@
+@import "../../styles/theme.css";
+
+
+.dashboard-layout{
+  display: flex;
+  gap: 18px;
+  align-items: stretch;
+  padding: 20px;
+  min-height: calc(100vh - 120px);
+}
+.user-profile{
+  flex: 0 0 20%;
+  min-width: 200px;
+  background: linear-gradient(180deg, rgba(124,58,237,0.98), rgba(37,99,235,0.95));
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #fff;
+}
+.avatar{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:#fff;
+  font-weight:700;
+  font-size:28px;
+  box-shadow: 0 4px 10px rgba(2,6,23,0.06);
+}
+.user-info{ flex:1 }
+.user-info .name{ font-weight:700; color:inherit; font-size:16px; display:flex; align-items:center; gap:8px }
+.user-icon{ color:rgba(255,255,255,0.9) }
+.user-info .email{ font-size:13px; color:rgba(255,255,255,0.9); margin-top:6px }
+.user-info .role{ margin-top:8px; font-size:13px; color:rgba(255,255,255,0.9) }
+.user-info .desc{ margin-top:12px; color:rgba(255,255,255,0.95); line-height:1.45; font-size:14px }
+.user-info{ flex:1 }
+.user-info .name{ font-weight:700; color:var(--text); font-size:18px }
+.user-info .email{ font-size:13px; color:var(--muted); margin-top:6px }
+.user-info .role{ margin-top:8px; font-size:13px; color:var(--accent-muted) }
+.user-info .desc{ margin-top:12px; color:var(--text); line-height:1.45 }
+
+.project-section{ flex: 1 1 70%; }
+.project-section .placeholder{ background:var(--card-bg); padding:16px; border-radius:10px; box-shadow:0 6px 18px rgba(2,6,23,0.04) }
