@@ -12,7 +12,7 @@ export const createUser = async (req: any, res: any) => {
         password,
         desc,
         role
-      },
+      } as any,
     });
     res.status(201).json(user);
   } catch (error) {

@@ -1,5 +1,5 @@
 {
-  "name": "nosql-prisma-rest",
+  "name": "backend",
   "version": "1.0.0",
   "description": "Node express Typescript Prisma ORM mongodb REST api ",
   "main": "index.js",
