@@ -1,16 +1,59 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# Test users
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The following test users were created by the seed script. Each user has a default password of `1234`.
 
-## React Compiler
+```javascript
+// test users (objects you can paste/use in code)
+export const testUser1 = {
+  id: '6997fa9a546c425b9eb6eedd',
+  fullName: 'Alex Chen',
+  email: 'alex.chen@example.com',
+  password: '1234',
+  desc: 'E-Commerce Checkout Flow',
+  role: 'CEO',
+};
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+export const testUser2 = {
+  id: '6997fa9a546c425b9eb6eede',
+  fullName: 'Sarah Johnson',
+  email: 'sarah.johnson@example.com',
+  password: '1234',
+  desc: 'FinSafe App Launch',
+  role: 'Marketing Lead',
+};
 
-## Expanding the ESLint configuration
+export const testUser3 = {
+  id: '6997fa9a546c425b9eb6eedf',
+  fullName: 'Denver-LB Council Sync',
+  email: 'denver.lb.council@example.com',
+  password: '1234',
+  desc: 'Municipal Policy & Zoning Oversight',
+  role: 'Legislative Coordinator',
+};
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+export const testUser4 = {
+  id: '6997fa9b546c425b9eb6eee0',
+  fullName: 'Liam O’Connor',
+  email: 'liam.oconnor@example.com',
+  password: '1234',
+  desc: 'Online Learning Platform Revamp',
+  role: 'Lead Developer',
+};
+
+export const testUser5 = {
+  id: '6997fa9b546c425b9eb6eee1',
+  fullName: 'Michael Vance',
+  email: 'michael.vance@example.com',
+  password: '1234',
+  desc: 'Municipal Policy & Infrastructure Oversight',
+  role: 'Legislative Coordinator',
+};
+```
+
+Usage:
+- The seed script created these users in the backend. Sign in with any user's `email` and the password `1234`.
+- The app's `AuthProvider` will detect the signed-in user's email and expose the matching fixture as `testUser` in the context for UI/testing.
+
+File: `src/test/testuse.js` contains richer fixture data (meetings, slack, whatsapp, etc.) if you need more details.

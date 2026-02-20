@@ -116,17 +116,18 @@ export const deleteAllUsers = async () => {
 
 
 
+
 /*
 
 all methods of project
 
 post /projects - create project
 get /projects/user/:userId - get projects by user ID
+get /projects/:projectId - get a project by ID
 put /projects/:projectId - update a project
 delete /projects/:projectId - delete a project
 
  */
-
 
 export const createProject = async (projectData) => {
   try {
@@ -151,6 +152,20 @@ export const getProjectsByUserId = async (userId) => {
   } catch (error) {
     console.error('Error fetching projects:', error);
     const errMsg = error?.response ? (error.response.data?.message ?? error.response.message) : "Failed to fetch projects";
+    toast.error(errMsg);
+    throw error;
+  }
+};
+
+export const getProjectById = async (projectId) => {
+  try {
+    const response = await api.get(`/projects/${projectId}`);
+    const msg = _extractMessage(response) || "Project fetched successfully";
+    toast.success(msg);
+    return response.data ?? response;
+  } catch (error) {
+    console.error('Error fetching project:', error);
+    const errMsg = error?.response ? (error.response.data?.message ?? error.response.message) : "Failed to fetch project";
     toast.error(errMsg);
     throw error;
   }

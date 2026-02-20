@@ -1,0 +1,49 @@
+
+🔴 TIER 1 – INTERNAL DECISION MAKERS
+
+
+
+1️⃣ Alex Chen
+
+Role: CEO
+
+Belonging: Internal (Company Leadership)
+
+2️⃣ Maria Santos
+
+Role: CFO
+
+Belonging: Internal (Finance Department)
+
+3️⃣ Rajesh Patel
+
+Role: CTO
+
+Belonging: Internal (Technology Department)
+
+
+🟠 TIER 2 – INTERNAL EXECUTION TEAM
+
+
+4️⃣ James Liu
+
+Role: Senior Developer
+
+Belonging: Internal (Engineering Team)
+
+
+🟡 TIER 3 – EXTERNAL VENDOR
+
+
+5️⃣ CyberSafe Security Solutions
+
+Role: Security Audit Vendor
+
+Belonging: External Vendor
+
+6️⃣ Sarah Jenkins
+
+Role: Lead Auditor
+
+Belonging: CyberSafe Security Solutions (External)
+

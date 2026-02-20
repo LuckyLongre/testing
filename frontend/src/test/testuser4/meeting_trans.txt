@@ -1,0 +1,33 @@
+MEETING: GDPR Compliance & Security Sync
+DATE: Feb 12, 2024
+PARTICIPANTS: Liam O’Connor (Lead Dev), Eva Müller (CTO), Oliver Reed (CFO)
+
+[00:02:15] Eva (CTO): Okay, so Nina’s proposal… $12,500 for 12 days. Uh, this is critical for GDPR compliance. We can’t skip any key audits.
+
+[00:03:00] Oliver (CFO): Hmm, $12.5k… Our total sprint budget is $40k. Spending that leaves less for new learning features. So, uh… trade-offs here.
+
+[00:03:40] Liam (Lead Dev): Yeah, I get it. Uh, maybe we can do partial audit? Critical modules first, minor modules later… just to stay on schedule.
+
+[00:04:10] Eva (CTO): Partial audit = high risk. Uh, only documented mitigation counts. Anything skipped flagged properly. We don’t want regulators complaining.
+
+[00:04:20] Oliver (CFO): Uh-huh… agreed. But, budget is $40k cap. $12.5k for core audit, dev gets remaining. Make sure we note all decisions for accountability.
+
+[00:04:50] Liam (Lead Dev): Okay, hmm… I’ll ensure skipped modules are documented, risk levels assigned. Dev team will prioritize API endpoints handling personal data and payments first.
+
+[00:05:25] Eva (CTO): Good. Uh, don’t forget testing encryption, access controls, logging compliance. Minor UI modules can wait, but logged in the mitigation register.
+
+[00:05:55] Oliver (CFO): Also, just flag… some side tasks like email notifications and badges are less critical. Uh… can temporarily defer but still log them.
+
+[00:06:25] Liam (Lead Dev): Yeah, yeah… makes sense. Partial audit for non-critical modules, logged. Major modules get full review. Uh… will communicate this to QA and Dev teams.
+
+[00:06:50] Eva (CTO): Okay, cool. Just a note: regulators can request evidence at any point, so mitigation logs must be clear, timestamped, and complete. Uh… don’t want any gaps.
+
+[00:07:20] Liam (Lead Dev): Got it. I’ll assign internal reviewers for skipped modules. High-risk modules get external auditor sign-off. Uh… so we’re covered.
+
+[00:07:50] Oliver (CFO): And… just to note, dev team is slightly concerned about timeline. Hmm… maybe we need extra hours for the API security testing.
+
+[00:08:15] Liam (Lead Dev): Yeah, we can shuffle resources. Uh… might need minor overtime. But overall, $12.5k is acceptable for this sprint.
+
+[00:08:40] Eva (CTO): Perfect. Uh… just remember, partial audit decisions, budget notes, risk assignments—everything logged. Transparency is key if regulators check later.
+
+[00:09:10] Liam (Lead Dev): Noted. Uh-huh… we’ll document everything carefully. I’ll send a summary to CFO and auditor by EOD.

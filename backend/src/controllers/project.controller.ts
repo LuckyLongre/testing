@@ -38,6 +38,22 @@ export const getProjectsByUserId = async (req: any, res: any, next: any) => {
 };
 
 
+export const getProjectById = async (req: any, res: any, next: any) => {
+  try {
+    const { projectId } = req.params;
+    if (!projectId) return next(new apiError(400, "projectId is required"));
+
+    const project = await prisma.project.findUnique({ where: { id: projectId } });
+    if (!project) return next(new apiError(404, "Project not found"));
+
+    return Api.success(res, project, "Project fetched successfully");
+  } catch (error: any) {
+    console.error(error);
+    return next(new apiError(500, "Failed to fetch project", [error?.message || String(error)], error?.stack));
+  }
+};
+
+
 export const updateProject = async (req: any, res: any, next: any) => {
   try {
     const { projectId } = req.params;

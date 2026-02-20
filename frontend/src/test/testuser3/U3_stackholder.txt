@@ -1,0 +1,29 @@
+Stakeholder Hierarchy: Denver-LB Council
+
+TIER 1 – Internal Decision Makers
+
+Speaker 1 / Council President – Internal (City Council)
+
+Councilwoman Ortega – Internal (City Council)
+
+Councilmember Johnson – Internal (City Council)
+
+Councilman Herndon – Internal (City Council)
+
+TIER 2 – Internal Execution
+
+Speaker 3 (Madam Secretary) – Internal (Legislative/Admin)
+
+Speaker 2 (Legal/Clerk) – Internal (City Attorney/Legal)
+
+Speaker 5 (Budget Reviewer) – Internal (Finance/Audit)
+
+Speaker 6 (Zoning Coordinator) – Internal (Planning/Zoning)
+
+TIER 3 – External Entities
+
+Colorado Health Network (CAP) – External (Health Vendor)
+
+Del Norte Neighborhood Dev. – External (Loan Recipient)
+
+Denver Public Schools – External (Community Partner)

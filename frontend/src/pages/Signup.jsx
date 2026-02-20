@@ -38,7 +38,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white p-6">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-b from-gray-50 to-white p-6">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold text-gray-900">Signup</h2>
 

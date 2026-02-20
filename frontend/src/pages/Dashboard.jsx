@@ -17,7 +17,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white p-6 relative">
+    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white p-6 relative">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-semibold text-gray-900">Dashboard</h2>
         <button

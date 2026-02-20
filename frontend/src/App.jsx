@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center">
+    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white flex items-center">
       <main className="max-w-6xl mx-auto px-6 py-20">
         <div className="bg-white rounded-lg shadow-lg p-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Deterministic BRD generation with data lineage</h2>

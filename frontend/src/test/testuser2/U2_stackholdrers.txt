@@ -1,0 +1,28 @@
+📌 Project: FinSafe App Launch
+
+User: Sarah Johnson
+Role: Marketing Lead
+
+🔴 TIER 1 – Internal Decision Makers (Strategic Authority)
+
+Sarah Johnson – Marketing Lead
+
+Alex Chen – CEO
+
+Sarah Jenkins – Lead Auditor (Authorized External Review)
+
+🟠 TIER 2 – Internal Execution & Technical Team
+
+Michael Torres – Engineering
+
+David – Backend Developer
+
+Intern Sam – Intern (Support Role)
+
+🟡 TIER 3 – External Professional Entities
+
+CyberSafe Security Solutions – Security Audit Vendor
+
+Investors / Venture Capitalists (VCs) – Funding Stakeholders
+
+Insurance Providers – Compliance & Risk Coverage (mentioned in proposal context)

@@ -1,0 +1,13 @@
+PROJECT PROPOSAL – Learning Platform Security & GDPR Compliance
+USER: Liam O’Connor (Lead Developer)
+VENDOR: EduSecure Consulting
+AUTHORIZED BY: Nina Shah (Lead Auditor)
+PROJECT SCOPE:
+1. Web application penetration testing for the full learning platform.
+2. GDPR data privacy compliance audit covering user data and storage policies.
+3. Detailed vulnerability report with remediation plans for identified risks.
+4. Comprehensive risk documentation for internal and external stakeholders.
+COST: $12,500 USD
+TIMELINE: 12 business days
+MANDATORY COMPLIANCE: External audit is required for GDPR certification. Internal developer-only checks are insufficient. Skipping or partially performing the audit risks regulatory fines, loss of customer trust, and potential legal exposure.
+NOTES: Priority given to critical modules affecting user data and payment transactions. Minor modules may be temporarily deferred, but documented in risk logs.

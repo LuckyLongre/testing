@@ -1,0 +1,42 @@
+USER 5 – STAKEHOLDERS (From JSON Only)
+🔴 TIER 1 – INTERNAL DECISION MAKERS
+
+Sophia Martinez
+
+Role: Product Manager
+
+Belonging: Internal (Product)
+
+Ryan Cooper
+
+Role: CTO
+
+Belonging: Internal (Technology)
+
+Melissa Grant
+
+Role: CFO
+
+Belonging: Internal (Finance)
+
+🟠 TIER 2 – INTERNAL EXECUTION
+
+DevOps Lead
+
+Role: DevOps
+
+Belonging: Internal (Engineering)
+
+🟡 TIER 3 – EXTERNAL VENDOR
+
+SecureLayer Advisory
+
+Role: PCI-DSS Audit Vendor
+
+Belonging: External
+
+Daniel Brooks
+
+Role: Chief Security Auditor
+
+Belonging: SecureLayer Advisory
