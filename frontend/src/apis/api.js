@@ -257,9 +257,10 @@ export const increamentProjectStatus = async (projectId) => {
 };
 
 
-export const mapFacts = async (projectId, relevantChats) => {
+export const mapFacts = async (projectId, userData) => {
   try {
-    const response = await api.post(`/projects/${projectId}/map-facts`, { relevantChats });
+    // Send full `userData` in the request body (backend expects `userData`)
+    const response = await api.post(`/projects/${projectId}/map-facts`, { userData });
     const msg = _extractMessage(response) || "Facts mapped successfully";
     toast.success(msg);
     return response.data ?? response;

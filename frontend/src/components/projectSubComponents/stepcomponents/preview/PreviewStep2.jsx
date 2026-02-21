@@ -4,7 +4,21 @@ import { increamentProjectStatus } from '../../../../apis/api';
 import { useProject } from '../../../providers/ProjectProvider';
 
 export default function PreviewStep2({ result, onBack, projectId, onIncrementSuccess }) {
-  const facts = Array.isArray(result) ? result : result?.data || [];
+  // Normalize backend response shapes:
+  // - raw array
+  // - { savedFacts: [...] }
+  // - { data: { savedFacts: [...] } }
+  let facts = [];
+  let relatedChats = [];
+  if (Array.isArray(result)) facts = result;
+  else if (Array.isArray(result?.savedFacts)) facts = result.savedFacts;
+  else if (Array.isArray(result?.data?.savedFacts)) facts = result.data.savedFacts;
+  else if (Array.isArray(result?.data)) facts = result.data;
+
+  if (Array.isArray(result?.relatedChats)) relatedChats = result.relatedChats;
+  else if (Array.isArray(result?.data?.relatedChats)) relatedChats = result.data.relatedChats;
+  const rawModelResponse = result?.rawModelResponse ?? result?.data?.rawModelResponse ?? null;
+  const fileLinks = result?.fileLinks ?? result?.data?.fileLinks ?? [];
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { fetchProject } = useProject();
@@ -21,6 +35,22 @@ export default function PreviewStep2({ result, onBack, projectId, onIncrementSuc
       setError(String(err));
     } finally {
       setLoading(false);
+    }
+  };
+
+  const renderContent = (content) => {
+    if (content == null) return 'Untitled fact';
+    if (typeof content === 'string') return content;
+    try {
+      if (typeof content === 'object') {
+        // prefer common text field
+        if (content.text) return content.text;
+        if (content.content) return content.content;
+        return JSON.stringify(content);
+      }
+      return String(content);
+    } catch (e) {
+      return String(content);
     }
   };
 
@@ -53,18 +83,53 @@ export default function PreviewStep2({ result, onBack, projectId, onIncrementSuc
       <div className="flex-1 overflow-y-auto pr-2">
         <div className="grid grid-cols-1 gap-3">
           {facts.map((f, i) => (
-            <div key={i} className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+            <div key={f.id ?? i} className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 bg-white border rounded-lg flex items-center justify-center text-slate-400">
                   <FiFileText />
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-black text-slate-800">{f.content || f.fact || 'Untitled fact'}</div>
-                  <div className="text-[11px] text-slate-500 mt-1">{f.source} • {f.tone} • {f.when}</div>
+                  <div className="text-sm font-black text-slate-800">{renderContent(f.content || f.fact)}</div>
+                  <div className="text-[11px] text-slate-500 mt-1">{f.source || 'unknown source'} • {f.tone || 'unknown'} • {f.when ? new Date(f.when).toLocaleString() : 'unknown'}</div>
+
+                  <div className="mt-3 grid grid-cols-2 gap-2 text-[12px] text-slate-600">
+                    <div><strong>ID:</strong> <span className="text-slate-700">{f.id ?? '—'}</span></div>
+                    <div><strong>Source Type:</strong> <span className="text-slate-700">{f.sourceType ?? '—'}</span></div>
+                    <div><strong>Resolved:</strong> <span className="text-slate-700">{String(f.resolved)}</span></div>
+                    <div><strong>Stakeholder ID:</strong> <span className="text-slate-700">{f.stackHolderId ?? '—'}</span></div>
+                    <div><strong>Project ID:</strong> <span className="text-slate-700">{f.projectId ?? '—'}</span></div>
+                    <div><strong>Raw Source:</strong> <span className="text-slate-700 break-all">{f.source ?? '—'}</span></div>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
+          {/* File links and raw model response (if provided) */}
+          {fileLinks.length > 0 && (
+            <div className="mt-4">
+              <div className="text-sm font-bold text-slate-700">File Links</div>
+              {fileLinks.map((fl, idx) => (
+                <a key={fl.url ?? idx} href={fl.url} target="_blank" rel="noreferrer" className="block text-[12px] text-indigo-600 mt-1">{fl.name}</a>
+              ))}
+            </div>
+          )}
+          {rawModelResponse && (
+            <div className="mt-4">
+              <div className="text-sm font-bold text-slate-700">Raw Model Response (truncated)</div>
+              <pre className="text-[11px] text-slate-500 mt-2 whitespace-pre-wrap max-h-48 overflow-auto p-2 bg-slate-100 rounded">{String(rawModelResponse).slice(0, 2000)}</pre>
+            </div>
+          )}
+          {relatedChats.length > 0 && (
+            <>
+              <div className="mt-4 text-sm font-bold text-slate-700">Related Chats (whs)</div>
+              {relatedChats.map((c, idx) => (
+                <div key={c.id ?? idx} className="p-3 bg-white border border-slate-100 rounded-md mt-2">
+                  <div className="text-sm font-black text-slate-800">{c.text}</div>
+                  <div className="text-[11px] text-slate-500 mt-1">{c.speaker} • {c.when ? new Date(c.when).toLocaleString() : 'unknown'}</div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </div>

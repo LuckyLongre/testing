@@ -2,22 +2,26 @@ import React, { useState } from 'react';
 import { mapFacts } from '../../../../apis/api';
 import PreviewStep2 from '../preview/PreviewStep2';
 import { useProject } from '../../../providers/ProjectProvider';
+import { useAuth } from '../../../providers/AuthProvider';
 
 export default function Step2({ project }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [result, setResult] = useState(null);
   const [preview, setPreview] = useState(false);
+  
+  const { testUser } = useAuth();
   const { fetchProject } = useProject();
 
   const handleRun = async () => {
     setError(null);
     setLoading(true);
     try {
-      const relevantChats = project?.relevantChats ?? [];
-      const resp = await mapFacts(project?.id, relevantChats);
+      const userData = testUser;
+      const resp = await mapFacts(project?.id, userData);
       const facts = resp?.facts ?? resp?.data ?? resp ?? [];
       setResult(facts);
+      console.log('Synthesis result:', facts);
       setPreview(true);
     } catch (err) {
       setError(String(err));
