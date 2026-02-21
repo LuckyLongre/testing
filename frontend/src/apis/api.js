@@ -129,6 +129,7 @@ put /projects/:projectId - update a project
 delete /projects/:projectId - delete a project
 post /projects/:projectId/files - upload project files
 post /projects/:projectId/stakeholders - map stakeholders
+post /projects/:projectId/map-facts - map facts
 post /projects/:projectId/increament-status - increament project status
  */
 
@@ -255,6 +256,20 @@ export const increamentProjectStatus = async (projectId) => {
   }
 };
 
+
+export const mapFacts = async (projectId, relevantChats) => {
+  try {
+    const response = await api.post(`/projects/${projectId}/map-facts`, { relevantChats });
+    const msg = _extractMessage(response) || "Facts mapped successfully";
+    toast.success(msg);
+    return response.data ?? response;
+  } catch (error) {
+    console.error('Error mapping facts:', error);
+    const errMsg = error?.response ? (error.response.data?.message ?? error.response.message) : "Failed to map facts";
+    toast.error(errMsg);
+    throw error;
+  }
+};
 
 
 

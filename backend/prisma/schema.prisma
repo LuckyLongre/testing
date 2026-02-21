@@ -69,6 +69,11 @@ model Fact {
   project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 }
 
+enum FactSourceType {
+  messaging
+  file
+}
+
 model Contradiction {
   id                  String   @id @default(auto()) @map("_id") @db.ObjectId
   contradiction_facts String[]      @default([])
@@ -88,9 +93,4 @@ model Resolution {
   projectId        String @db.ObjectId
 
   project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
-}
-
-enum FactSourceType {
-  messaging
-  file
 }
